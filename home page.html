@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alex | AleTube1st YouTube Channel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0202 100%);
+        }
+        .adem-glow {
+            text-shadow: 0 0 8px #ff2d2d, 0 0 16px #ff2d2d;
+        }
+        .adem-card {
+            box-shadow: 0 0 16px #ff2d2d55;
+            border: 1.5px solid #ff2d2d;
+        }
+        .adem-btn {
+            box-shadow: 0 0 8px #ff2d2d;
+            border: 1.5px solid #ff2d2d;
+        }
+        .modal-bg {
+            background: rgba(30, 0, 0, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-white min-h-screen">
+    <header class="bg-gradient-to-r from-red-900 via-red-700 to-gray-900 p-6 flex items-center justify-between">
+        <h1 class="text-3xl font-bold adem-glow">Alex - AleTube1st</h1>
+        <div class="flex gap-4">
+            <a href="https://www.youtube.com/@AleTube1st" target="_blank" class="adem-btn bg-black text-red-400 px-4 py-2 rounded shadow hover:bg-red-900 font-semibold transition adem-glow">Visit YouTube Channel</a>
+            <button id="signinBtn" class="adem-btn bg-black text-red-400 px-4 py-2 rounded shadow hover:bg-red-900 font-semibold transition adem-glow">Sign In</button>
+        </div>
+    </header>
+    <!-- Sign In Modal -->
+    <div id="modal" class="fixed inset-0 flex items-center justify-center z-50 hidden modal-bg">
+        <div class="bg-gray-900 rounded-lg p-8 adem-card w-full max-w-xs relative">
+            <button id="closeModal" class="absolute top-2 right-2 text-red-400 text-xl font-bold">&times;</button>
+            <h2 class="text-xl font-bold adem-glow mb-4 text-center">Sign In</h2>
+            <form id="signinForm" class="flex flex-col gap-4">
+                <input type="text" id="username" placeholder="Username" class="bg-gray-800 text-white px-3 py-2 rounded adem-card" autocomplete="username" required>
+                <input type="password" id="password" placeholder="Password" class="bg-gray-800 text-white px-3 py-2 rounded adem-card" autocomplete="current-password" required>
+                <button type="submit" class="adem-btn bg-black text-red-400 px-4 py-2 rounded font-semibold transition adem-glow">Sign In</button>
+                <div id="signinMsg" class="text-center mt-2 text-red-400 adem-glow text-sm"></div>
+            </form>
+        </div>
+    </div>
+    <main class="max-w-5xl mx-auto py-10">
+        <h2 class="text-2xl font-semibold mb-6 adem-glow">Latest Videos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Video Card 1 -->
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="block bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition adem-card">
+                <img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg" alt="Video Title 1" class="w-full h-48 object-cover border-b-2 border-red-700">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold mb-2 adem-glow">Video Title 1</h3>
+                    <p class="text-red-300">Short description of the video.</p>
+                </div>
+            </a>
+            <!-- Video Card 2 -->
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="block bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition adem-card">
+                <img src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg" alt="Video Title 2" class="w-full h-48 object-cover border-b-2 border-red-700">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold mb-2 adem-glow">Video Title 2</h3>
+                    <p class="text-red-300">Short description of the video.</p>
+                </div>
+            </a>
+            <!-- Video Card 3 -->
+            <a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="block bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition adem-card">
+                <img src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg" alt="Video Title 3" class="w-full h-48 object-cover border-b-2 border-red-700">
+                <div class="p-4">
+                    <h3 class="text-lg font-bold mb-2 adem-glow">Video Title 3</h3>
+                    <p class="text-red-300">Short description of the video.</p>
+                </div>
+            </a>
+            <!-- Add more video cards as needed -->
+        </div>
+    </main>
+    <footer class="text-center py-6 bg-gray-900 text-red-400 adem-glow">
+        &copy; 2025 Alex | AleTube1st. All rights reserved.
+    </footer>
+    <script>
+        // Show modal
+        document.getElementById('signinBtn').onclick = function() {
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('signinMsg').textContent = '';
+        };
+        // Hide modal
+        document.getElementById('closeModal').onclick = function() {
+            document.getElementById('modal').classList.add('hidden');
+        };
+        // Handle sign in
+        document.getElementById('signinForm').onsubmit = function(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const msg = document.getElementById('signinMsg');
+            if (user === 'alexbrown' && pass === 'alexis@33#') {
+                msg.textContent = 'Sign in successful!';
+                msg.classList.add('text-green-400');
+                setTimeout(() => {
+                    document.getElementById('modal').classList.add('hidden');
+                }, 1200);
+            } else {
+                msg.textContent = 'Invalid username or password.';
+                msg.classList.remove('text-green-400');
+            }
+        };
+    </script>
+</body>
+</html>
